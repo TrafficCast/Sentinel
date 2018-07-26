@@ -50,7 +50,9 @@ class SentryServiceProvider extends ServiceProvider
     public function __construct($app)
     {
         parent::__construct($app);
-        $this->redirect = $this->app->make('redirect');
+        // Remove due to issue with using redis as session driver
+        // https://github.com/rydurham/Sentinel/issues/231
+        // $this->redirect = $this->app->make('redirect');
         $this->session  = $this->app->make('session');
     }
 
